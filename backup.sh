@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# zjištění kolik místa zabírám se dá zjistit přes:
+# ssh 17977@ch-s011.rsync.net  
+
 REPOSITORY=17977@ch-s011.rsync.net:backup
 
 # Backup all of /home and /var/www except a few
@@ -23,4 +27,4 @@ borg create --remote-path=borg1 -v --stats                          \
 # limit prune's operation to this machine's archives and not apply to
 # other machine's archives also.
 borg prune --remote-path=borg1 -v --list $REPOSITORY --prefix '{hostname}-' \
-    --keep-daily=7 --keep-weekly=4 --keep-monthly=24
+    --keep-daily=7 --keep-weekly=4 --keep-monthly=24 --keep-yearly=100
