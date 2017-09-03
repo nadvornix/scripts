@@ -19,6 +19,6 @@ mv $RealPath ~/Dropbox/dotfiles$Dir
 
 ln -s  "~/Dropbox/dotfiles$RealPath" "$RealPath"
 
-mkdir -p ~/Dropbox/dotfiles-symlinks$Dir
+# mkdir -p ~/Dropbox/dotfiles-symlinks$Dir
 
-ln -s ~/Dropbox/dotfiles$RealPath ~/Dropbox/dotfiles-symlinks$Dir
+# ln -s ~/Dropbox/dotfiles$RealPath ~/Dropbox/dotfiles-symlinks$Dir
