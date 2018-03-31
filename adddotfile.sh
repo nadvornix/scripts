@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Manual: adddotfile.sh path to file.
+# updatedotfiles.sh se pravidelně spouští a aktualizuje (?)
+
+# TODO:
+# - info a/ what files I have synchronized
+# - something like ls-synced that write * on synced files
+
+
 set -e
 set -x
 
@@ -17,7 +25,7 @@ mkdir -p ~/Dropbox/dotfiles$Dir
 
 mv $RealPath ~/Dropbox/dotfiles$Dir
 
-ln -s  "~/Dropbox/dotfiles$RealPath" "$RealPath"
+ln -s  ~/Dropbox/dotfiles$RealPath $RealPath
 
 # mkdir -p ~/Dropbox/dotfiles-symlinks$Dir
 
