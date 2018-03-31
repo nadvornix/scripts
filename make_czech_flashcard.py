@@ -44,7 +44,6 @@ for word in lines:
         basic_model = json.load(open(script_path + "/Text-input-card.json"))
         collection.models.add(basic_model)
 
-    # basic_model = collection.models.byName('Basic')
     basic_model['did'] = deckId
     collection.models.save(basic_model)
     collection.models.setCurrent(basic_model)
@@ -53,7 +52,7 @@ for word in lines:
     mp3_filename = mp3_path + str(
         base64.b32encode(bytes(word, encoding="utf8")[:30]))
     tts.save(mp3_filename)
-    fact['Front'] = "[sound:{audio_filename}] <br> {word}".format(
+    fact['Front'] = "[sound:{audio_filename}] <br>".format(
         audio_filename=mp3_filename, word=word)
 
     fact['Back'] = word
