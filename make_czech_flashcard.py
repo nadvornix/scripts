@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+
 """
 dependecies:
 - anki (je v virtualenv ankifier)
+
 
 """
 import json
@@ -10,7 +12,7 @@ import os
 import base64
 import tempfile
 from gtts import gTTS
-from anki import Collection
+from anki import Collection # TODO: put symlink to anki dir
 
 deck_name = "Cz-spelling"
 ankiweb_username = "nadvornik.jiri@gmail.com"
