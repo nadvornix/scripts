@@ -17,7 +17,7 @@ echo "Please wait 5 seconds. Are you sure you cannot avoid checking messages?"
 sleep 5
 while true; do
     # empty stdin buffer so that user cannot answer in advance
-    read -t 1 -n 10000 discard
+    while read -r -t 0; do read -r; done
     read -p "Are you sure (y/n)? " yn
     case $yn in
         [Yy]* ) break;;
@@ -29,3 +29,7 @@ echo "I will block you for 30 more seconds, you can still interrupt it."
 sleep 30
 echo "Unblocked."
 sudo sed -i -r '/BLOCKME/s/^/# /g' /etc/hosts
+
+# logging:
+date '+%Y-%m-%d %H:%M:%S block' >> ~/.block_communications.log
+

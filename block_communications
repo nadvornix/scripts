@@ -1,15 +1,16 @@
 #!/bin/bash
 
+set -e
+
 # put lines like these to you /etc/hosts
 # 127.0.0.1	mail.google.com	# BLOCKME
 
 # -i means inplace (instead of piping)
-
-date '+%Y-%m-%d %H:%M:%S' > /home/jiri/pokus.txt
-
 sudo sed -i -r '/BLOCKME/s/^#[# ]+//g' /etc/hosts
 
 echo "Good choice!"
 echo "Don't forget to determine conditions for unblocking."
 
 
+# logging:
+date '+%Y-%m-%d %H:%M:%S block' >> ~/.block_communications.log
