@@ -14,7 +14,7 @@ int_handler()
 trap 'int_handler' INT
 
 echo "Please wait 5 seconds. Are you sure you cannot avoid checking messages?"
-# sleep 5
+sleep 5
 while true; do
     # empty stdin buffer so that user cannot answer in advance
     while read -r -t 0; do read -r; done
@@ -26,7 +26,7 @@ while true; do
 done
 
 echo "I will block you for 30 more seconds, you can still interrupt it."
-# sleep 30
+sleep 30
 echo "Unblocked."
 sudo sed -i -r '/BLOCKME/s/^/# /g' /etc/hosts
 
