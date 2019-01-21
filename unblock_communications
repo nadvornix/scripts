@@ -4,6 +4,13 @@
 
 set -e
 
+if [ $# -ne 1 ]
+then
+    echo "usage: unblock_communications num_minutes"
+    exit
+fi
+
+
 int_handler()
 {
     echo "Interrupted. Good choice."
