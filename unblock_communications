@@ -34,15 +34,22 @@ done
 
 echo "I will block you for 30 more seconds, you can still interrupt it."
 sleep 30
-echo "Unblocked."
-sudo sed -i -r '/BLOCKME/s/^/# /g' /etc/hosts
+# echo "Unblocked."
+sudo sed -i -r '/^[^#].*BLOCKME.*/s/^/# /g' /etc/hosts
 
 # blocking again if second argument given::
 if [ $# -eq 1 ]
 then
-    echo "blocking again in $1 minutes"
-    echo '/home/jiri/projects/scripts/block_communications' | at now +$1 minutes
+    # echo "blocking again in $1 minutes"
+    echo '/home/jiri/projects/scripts/block_communications' | at now +$1 minutes 2> /dev/null
 fi
+
+touch ~/.block_communications.log
+last_block_date=$(cat ~/.block_communications.log | grep 'block' | tail -1 | awk '{print $1 " " $2}')
+last_block_timestamp=$(date -d "$last_block_date" +%s)
+now=$(date +%s)
+diff=$((now-last_block_timestamp))
+printf '%dh:%dm since last unblocking\n' $(($diff/3600)) $(($diff%3600/60))
 
 # logging:
 date '+%Y-%m-%d %H:%M:%S unblock' >> ~/.block_communications.log

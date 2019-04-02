@@ -12,6 +12,9 @@ sudo sed -i -r '/BLOCKME/s/^#[# ]+//g' /etc/hosts
 echo "Good choice!"
 echo "Don't forget to determine conditions for unblocking."
 
+# removing all at jobs. TODO: filter out only block_communications
+# at -c 211 will show content given script
+for i in `atq | awk '{print $1}'`;do atrm $i;done
 
 # logging:
 date '+%Y-%m-%d %H:%M:%S block' >> ~/.block_communications.log
