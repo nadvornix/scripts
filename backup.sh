@@ -22,7 +22,7 @@ REPOSITORY=17977@ch-s011.rsync.net:backup
 # excluded directories
 borg create --remote-path=borg1 -v --stats                          \
   $REPOSITORY::"{hostname}-{now:%Y-%m-%d}"    \
-  /home/jiri                                  \
+  /home/                                  \
   /etc                                        \
   --exclude '/home/*/.cache'                  \
   --exclude '*.pyc' 			 \
