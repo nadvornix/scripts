@@ -19,6 +19,13 @@ int_handler()
 }
 trap 'int_handler' INT
 
+/home/jiri/projects/scripts/block_communications
+
+if [ "$1" -gt "180" ]; then
+    echo "error: time interval larger than 180"
+    exit 1
+fi
+
 echo "Please wait 5 seconds. Are you sure you cannot avoid checking messages?"
 sleep 5
 while true; do
@@ -35,7 +42,7 @@ echo "I will block you for 30 more seconds, you can still interrupt it."
 sleep 30
 # echo "Unblocked."
 
-./score_communications.sh
+score_communications.sh
 
 sudo sed -i -r '/^[^#].*BLOCKME.*/s/^/# /g' /etc/hosts
 
