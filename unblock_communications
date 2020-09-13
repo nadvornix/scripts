@@ -20,7 +20,7 @@ trap 'int_handler' INT
 if [ $# -eq 0 ]
 then
     echo "Please wait 5 seconds. Are you sure you cannot avoid checking messages?"
-    # sleep 5
+    sleep 5
     # empty stdin buffer so that user cannot answer in advance
     while read -r -t 0; do read -r; done
     read -p "How long (in minutes)? " duration
