@@ -8,7 +8,9 @@ set -e
 # It is necessary that user can use sudo without typing password.
 
 # -i means inplace (instead of piping)
-sudo sed -i -r '/BLOCKME/s/^#[# ]+//g' /etc/hosts
+#sudo sed -i -r '/BLOCKME/s/^#[# ]+//g' /etc/hosts
+# lets uncommet everything instead:
+sudo sed -i -r 's/^#[# ]+//g' /etc/hosts
 
 echo "Good choice!"
 echo "Don't forget to determine conditions for unblocking."
