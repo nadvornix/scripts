@@ -24,7 +24,7 @@ then
     # empty stdin buffer so that user cannot answer in advance
     while read -r -t 0; do read -r; done
     read -p "How long (in minutes)? " duration
-    if [ "$duration" -gt "180" ]; then
+    if [ "$duration" -gt 180 ]; then
         echo "error: time interval larger than 180"
         exit 1
     fi
